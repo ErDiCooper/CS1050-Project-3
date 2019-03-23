@@ -43,10 +43,10 @@ public class Project_1_03 {
       calcReimbursement(mileage,reimb,numRead);
       displayHeading(outputFile);
       displayDetails(mileage,reimb,numRead);
-      averageMileage = calcAverage(mileage,numRead);
-      averageReimb   = calcAverage(reimb,numRead);
       totalMileage   = calcTotal(mileage,numRead);
       totalReimb     = calcTotal(reimb,numRead);
+      averageMileage = calcAverage(totalMileage,numRead);
+      averageReimb   = calcAverage(totalReimb,numRead);
       
    } // End main
 
@@ -118,15 +118,9 @@ public class Project_1_03 {
    
    //************************************************************************
    
-   public static double calcAverage(double[] array1, int numProcess) {
+   public static double calcAverage(double total, int numProcess) {
    
-      double total = 0.0; // total of values in array1
       double average = 0.0; // average of values in array1
-      
-      for (int i = 0; i < array1.length; i++) {
-         total += array1[i];
-      }
-      
       average = total / numProcess;
       
       return average;
@@ -135,7 +129,14 @@ public class Project_1_03 {
    //************************************************************************
    
    public static double calcTotal(double[] array1, int numProcess) {
-      return 0.0;
+   
+      int total = 0.0; // total of values in array1
+      
+      for (int i = 0; i <array1.length; i++) {
+         total += array1[i];
+      }
+      
+      return total;
    } // End calcTotal
     
 } // End class
