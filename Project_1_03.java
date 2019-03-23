@@ -130,9 +130,9 @@ public class Project_1_03 {
       output.println("Total Reimbursement: " + totalReimb);
       output.println(""); 
       output.println("Average Mileage: " + averageMileage); 
-      output.println("Total Reimbursement: " + averageReimb);                                   
-   }
-   
+      output.println("Total Reimbursement: " + averageReimb);  
+                                       
+   } // End displaySummary
    
    //************************************************************************
    
