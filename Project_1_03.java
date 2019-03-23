@@ -3,13 +3,13 @@
 import java.util.Scanner;  // Access the Scanner class
 import java.io.*;          // Access PrintWriter and related classes
 
-public class DavidKramer_4_03 {
+public class Project_1_03 {
 
    public static void main(String[ ] args) throws IOException {
    
       // Declarations
-      final String INPUT_FILE  = "YourName_S_04_Input.txt";
-      final String OUTPUT_FILE = "YourName_S_04_Output.txt";
+      final String INPUT_FILE  = "Project_1_03_Input.txt";
+      final String OUTPUT_FILE = "Project_1_03_Output.txt";
       
       double[] mileage;       // Mileage values
       double[] reimb;         // Reimbursment values
