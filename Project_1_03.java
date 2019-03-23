@@ -53,6 +53,12 @@ public class Project_1_03 {
    //************************************************************************
    
    public static void explainProgram(PrintWriter output) {
+      output.println("With this program, we will be calculating the " +
+                     "reimbursement that you are owed for your fuel " +
+                     "expenses. For a full breakdown of the reimbursement " +
+                     "scale, please see the program's instructions.");
+      output.println("");
+      output.println("");
    } // End explainProgram
    
    //************************************************************************
@@ -73,6 +79,27 @@ public class Project_1_03 {
    public static void calcReimbursement(double[] mileage,
                                         double[] reimb,
                                         int numProcess) {
+                                        
+      for (int i = 0; i < mileage.length; i++) {
+         if(mileage[i] >= 2600.0) {
+            reimb[i] = 190.0 + ((mileage[i] - 2600.0) * 0.06);
+         }
+         else if(milage >= 1900.0) {
+            reimb[i] = 165.0 + ((mileage[i] - 1900.0) * 0.08); 
+         }
+         else if(milage >= 1300.0) {
+            reimb[i] = 140.0 + ((mileage[i] - 1300.0) * 0.10); 
+         }
+         else if(milage >= 900.0) {
+            reimb[i] = 115.0 + ((mileage[i] - 900.0) * 0.12); 
+         }
+         else if(milage >= 400.0) {
+            reimb[i] = 65.0 + ((mileage[i] - 400.0) * 0.15); 
+         }
+         else {
+            reimb[i] = mileage[i] * 0.18;
+         }
+      }
    } // End calcReimbursement
    
    //************************************************************************
