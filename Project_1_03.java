@@ -76,7 +76,7 @@ public class Project_1_03 {
    
    //************************************************************************
    
-   public static void calcReimbursement(double[] mileage,
+   public static double calcReimbursement(double[] mileage,
                                         double[] reimb,
                                         int numProcess) {
                                         
@@ -100,6 +100,8 @@ public class Project_1_03 {
             reimb[i] = mileage[i] * 0.18;
          }
       }
+      
+      return reimb;
    } // End calcReimbursement
    
    //************************************************************************
@@ -117,7 +119,17 @@ public class Project_1_03 {
    //************************************************************************
    
    public static double calcAverage(double[] array1, int numProcess) {
-      return 0.0;
+   
+      double total = 0.0; // total of values in array1
+      double average = 0.0; // average of values in array1
+      
+      for (int i = 0; i < array1.length; i++) {
+         total += array1[i];
+      }
+      
+      average = total / numProcess;
+      
+      return average;
    } // End calcAverage
        
    //************************************************************************
