@@ -76,7 +76,7 @@ public class Project_1_03 {
    
    //************************************************************************
    
-   public static double calcReimbursement(double[] mileage,
+   public static void calcReimbursement(double[] mileage,
                                         double[] reimb,
                                         int numProcess) {
                                         
@@ -84,24 +84,22 @@ public class Project_1_03 {
          if(mileage[i] >= 2600.0) {
             reimb[i] = 190.0 + ((mileage[i] - 2600.0) * 0.06);
          }
-         else if(milage >= 1900.0) {
+         else if(mileage[i] >= 1900.0) {
             reimb[i] = 165.0 + ((mileage[i] - 1900.0) * 0.08); 
          }
-         else if(milage >= 1300.0) {
+         else if(mileage[i] >= 1300.0) {
             reimb[i] = 140.0 + ((mileage[i] - 1300.0) * 0.10); 
          }
-         else if(milage >= 900.0) {
+         else if(mileage[i] >= 900.0) {
             reimb[i] = 115.0 + ((mileage[i] - 900.0) * 0.12); 
          }
-         else if(milage >= 400.0) {
+         else if(mileage[i] >= 400.0) {
             reimb[i] = 65.0 + ((mileage[i] - 400.0) * 0.15); 
          }
          else {
             reimb[i] = mileage[i] * 0.18;
          }
       }
-      
-      return reimb;
    } // End calcReimbursement
    
    //************************************************************************
@@ -130,7 +128,7 @@ public class Project_1_03 {
    
    public static double calcTotal(double[] array1, int numProcess) {
    
-      int total = 0.0; // total of values in array1
+      double total = 0.0; // total of values in array1
       
       for (int i = 0; i <array1.length; i++) {
          total += array1[i];
