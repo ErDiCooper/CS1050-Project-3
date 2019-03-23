@@ -47,6 +47,9 @@ public class Project_1_03 {
       totalReimb     = calcTotal(reimb,numRead);
       averageMileage = calcAverage(totalMileage,numRead);
       averageReimb   = calcAverage(totalReimb,numRead);
+      displaySummary(outputFile, 
+                     totalMileage, totalReimb, 
+                     averageMileage, averageReimb);
       
    } // End main
 
@@ -113,6 +116,23 @@ public class Project_1_03 {
                                      double[] reimb,
                                      int numProcess) {
    } // End displayDetails
+   
+   //************************************************************************
+   
+   public static void displaySummary(PrintWriter output,
+                                     double totalMileage,
+                                     double totalReimb,
+                                     double averageMileage,
+                                     double averageReimb) {
+   
+      output.println(""); 
+      output.println("Total Mileage: " + totalMileage);
+      output.println("Total Reimbursement: " + totalReimb);
+      output.println(""); 
+      output.println("Average Mileage: " + averageMileage); 
+      output.println("Total Reimbursement: " + averageReimb);                                   
+   }
+   
    
    //************************************************************************
    
