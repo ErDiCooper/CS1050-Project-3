@@ -62,7 +62,7 @@ public class Project_1_03 {
                      "scale, please see the program's instructions.");
       output.println("");
       output.println("");
-   } // End explainProgram
+   } // End explainProgram 
    
    //************************************************************************
    
