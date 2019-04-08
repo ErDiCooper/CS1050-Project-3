@@ -2,6 +2,7 @@
 
 import java.util.Scanner;  // Access the Scanner class
 import java.io.*;          // Access PrintWriter and related classes
+import java.text.DecimalFormat;
 
 public class Project_1_03 {
 
@@ -15,10 +16,10 @@ public class Project_1_03 {
       double[] reimb;         // Reimbursment values
       int numElements = 0;    // # of elements possible
       int numRead = 0;        // # of elements actually read
-      double averageMileage = 0.0;  // Average of valid miles
-      double averageReimb = 0.0;    // Average of valid reimbursements
-      double totalMileage = 0.0;    // Total of valid miles
-      double totalReimb   = 0.0;    // Total of valid reimbursements
+      double averageMileage = 0.0; // Average of valid miles
+      double averageReimb = 0.0;   // Average of valid reimbursements
+      double totalMileage = 0.0;   // Total of valid miles
+      double totalReimb   = 0.0;   // Total of valid reimbursements
       
       // Access the input and output files
       
@@ -27,6 +28,7 @@ public class Project_1_03 {
       
       FileWriter outputDataFile = new FileWriter(OUTPUT_FILE);
       PrintWriter outputFile = new PrintWriter(outputDataFile);
+
       
       // ******** End declarations, begin execution ********
       
@@ -57,21 +59,21 @@ public class Project_1_03 {
    //************************************************************************
    
    public static void explainProgram(PrintWriter output) {
-      output.println("With this program, we will be calculating the " + // output to the file
-                     "reimbursement that you are owed for your fuel " +
-                     "expenses. For a full breakdown of the reimbursement " +
-                     "scale, please see the program's instructions.");
-      output.println("");
-      output.println("");
-      output.flush();
 
-      System.out.println("With this program, we will be calculating the " + //echo to the console
+      String line = "With this program, " +
+              "we will be calculating the " +
               "reimbursement that you are owed for your fuel " +
-              "expenses. For a full breakdown of the reimbursement " +
-              "scale, please see the program's instructions.");
+              "expenses.";
+
+      output.println(line);
+      output.println("");
+      output.println("");
+
+
+      System.out.println(line);
       System.out.println("");
       System.out.println("");
-      System.out.flush();
+
    } // End explainProgram 
    
    //************************************************************************
@@ -95,7 +97,7 @@ public class Project_1_03 {
                                         
       for (int i = 0; i < mileage.length; i++) {
          if(mileage[i] >= 2600.0) {
-            reimb[i] = 190.0 + ((mileage[i] - 2600.0) * 0.06);
+            reimb[i] = 195.0 + ((mileage[i] - 2600.0) * 0.06);
          }
          else if(mileage[i] >= 1900.0) {
             reimb[i] = 165.0 + ((mileage[i] - 1900.0) * 0.08); 
@@ -109,8 +111,11 @@ public class Project_1_03 {
          else if(mileage[i] >= 400.0) {
             reimb[i] = 65.0 + ((mileage[i] - 400.0) * 0.15); 
          }
-         else {
+         else if(mileage[i] > 0){
             reimb[i] = mileage[i] * 0.18;
+         }
+         else {
+            reimb[i] = 0.0;
          }
       }
    } // End calcReimbursement
@@ -118,11 +123,14 @@ public class Project_1_03 {
    //************************************************************************
    
    public static void displayHeading(PrintWriter output) {
-      System.out.println("Mileage     Reimbursement");
-      System.out.println("-------     -------------");
 
-      output.println("Mileage     Reimbursement");
-      output.println("-------     -------------");
+      String line = "Mileage     Reimbursement";
+      String line2 = "-------     -------------";
+      System.out.println(line);
+      System.out.println(line2);
+
+      output.println(line);
+      output.println(line2);
    } // End displayHeading
    
    //************************************************************************
@@ -134,7 +142,6 @@ public class Project_1_03 {
       for(int i =0; i <mileage.length; i++){
          if(mileage[i] > 0) {
 
-
             output.println(Toolkit.leftPad(mileage[i], 7, "0.0") +
                     Toolkit.leftPad(reimb[i], 13, "0.00"));
 
@@ -145,10 +152,12 @@ public class Project_1_03 {
 
 
             output.println(Toolkit.leftPad(mileage[i], 7, "0.0") +
-                    Toolkit.leftPad(reimb[i], 13, "0.00"));
+                    "       ******");
 
             System.out.println(Toolkit.leftPad(mileage[i], 7, "0.0")+
                     "       ******");
+
+
          }
       }
    } // End displayDetails
@@ -161,30 +170,34 @@ public class Project_1_03 {
                                      double averageMileage,
                                      double averageReimb) {
    
-      output.println("");                                 // output to the file
+      output.println("");                                  // output to the file
       output.println("Total Mileage: " + totalMileage);
       output.println("Total Reimbursement: " + totalReimb);
       output.println(""); 
-      output.println("Average Mileage: " + averageMileage); 
-      output.println("Total Reimbursement: " + averageReimb);
+      output.println("Average Mileage: " + Toolkit.leftPad(averageMileage,
+              4, "0.0"));
+      output.println("Average Reimbursement: " + Toolkit.leftPad(averageReimb,
+              4, "0.0"));
 
       System.out.println("");                              // echo to the console
       System.out.println("Total Mileage: " + totalMileage);
       System.out.println("Total Reimbursement: " + totalReimb);
       System.out.println("");
-      System.out.println("Average Mileage: " + averageMileage);
-      System.out.println("Total Reimbursement: " + averageReimb);
+      System.out.println("Average Mileage: " + Toolkit.leftPad(averageMileage
+              , 4, "0.0"));
+      System.out.println("Average Reimbursement: " + Toolkit.leftPad(averageReimb,
+              4, "0.0"));
 
    } // End displaySummary
    
    //************************************************************************
    
-   public static double calcAverage(double total, int numProcess) {
+   public static double calcAverage(double total, int numValid) {
 
 
          double average = 0.0; // average of values in array1
-      if(numProcess>0) {
-         average = total / numProcess;
+      if(numValid > 0) {
+         average = total / numValid;
 
       }
          return average;
@@ -197,7 +210,7 @@ public class Project_1_03 {
    
       double total = 0.0; // total of values in array1
       
-      for (int i = 0; i <array1.length; i++) {
+      for (int i = 0; i < array1.length; i++) {
          if(array1[i] > 0) {
             total += array1[i];
          }
